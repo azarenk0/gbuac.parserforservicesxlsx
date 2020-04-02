@@ -1,0 +1,7 @@
+parser:
+  file-path: /Users/vladimir/AC.MOS/АИС КНД/Справочники/Эталонный_спрапвочник_для_загрузки.xlsx
+  output-path: /Users/vladimir/AC.MOS/АИС КНД/Справочники/temp-categories.csv
+  sheet-index: 1
+  column-for-parse: 2
+  in-delimiter: ;
+  out-delimiter: ;

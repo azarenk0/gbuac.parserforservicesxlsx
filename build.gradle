@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.5.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    archiveBaseName = 'parser-for-services-xlsx'
+    archiveVersion = '0.0.1'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://repo.spring.io/plugins-release'
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter")
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+    implementation('org.projectlombok:lombok')
+    annotationProcessor 'org.projectlombok:lombok'
+    testAnnotationProcessor('org.projectlombok:lombok')
+    testCompileOnly('org.projectlombok:lombok')
+
+    implementation 'org.apache.poi:poi:4.1.1'
+    implementation 'org.apache.poi:poi-ooxml:4.1.1'
+}
