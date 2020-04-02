@@ -54,18 +54,16 @@ public class ParserServiceImpl implements ParserService {
                 if (row.getCell(0).toString().equals("RegNumber")) continue;
                 String regNumber = row.getCell(0).toString().trim();
 
-                if (row.getCell(columnForParse) != null && !row.getCell(columnForParse).toString().isEmpty()) {
+                if (row.getCell(columnForParse) != null && !row.getCell(columnForParse).toString().trim().isEmpty()) {
                     if (row.getCell(columnForParse).toString().contains(inDelimiter)) {
-                        String[] tempCategory = row.getCell(columnForParse).toString().split(inDelimiter);
-                        for (String category : tempCategory) {
-                            exportList.add(String.format("%s%s%s", regNumber, outDelimiter, parseValue(category)));
+                        String[] tempValues = row.getCell(columnForParse).toString().split(inDelimiter);
+                        for (String value : tempValues) {
+                            exportList.add(String.format("%s%s%s", regNumber, outDelimiter, parseValue(value)));
                         }
                     } else {
-                        String category = row.getCell(columnForParse).toString();
-                        exportList.add(String.format("%s%s%s", regNumber, outDelimiter, parseValue(category)));
+                        String value = row.getCell(columnForParse).toString();
+                        exportList.add(String.format("%s%s%s", regNumber, outDelimiter, parseValue(value)));
                     }
-                } else {
-                    exportList.add(String.format("%s%s", regNumber, outDelimiter));
                 }
             }
         }
